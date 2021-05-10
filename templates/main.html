@@ -1,36 +1,23 @@
 {% extends "index.html" %}
 {% load static %}
 {% block content %}
+
+{% for ml in month_list %}
+    {% for dy in ml.day_set.all %}
+        {{ dy.remain_seat }}
+    {% endfor %}
+{% endfor %}
+
 <div class="calender">
     {{ YC|safe }}
 </div>
-<script>
-    const day = document.querySelectorAll('td');
-    var daySel = $('.selected').length + 1
 
-    day.forEach((items)=>{
-        items.addEventListener('click', (e)=>{
-            
-            // 선택한 날짜의 개수를 담는 변수
-            daySel = $('.selected').length + 1
+<div class="sendBtn"></div>
+<form id="dateSelForm" method="POST" action="">
+    <input id="monthForm" value="" type="hidden">
+    <input id="dayForm" value="" type="hidden">
+</form>
 
-            // 선택한 날짜가 몇달인지 찾는 변수
-            selMonth = $(items).parents('tr').parents('tbody').children('tr').first().text().trim()
+<script src="{% static 'script.js' %}"></script>
 
-            if(Number(items.innerHTML)){
-                if(daySel > 3 && !items.classList.contains('selected')){
-                    alert("Too Many Day")
-                }else{
-                    console.log(items.innerHTML);
-                    console.log(selMonth);
-                    items.classList.toggle('selected');
-                }
-            }else{
-                alert("Not a day");
-            }
-            e.stopPropagation();
-            
-        });
-    });
-</script>
 {% endblock %}

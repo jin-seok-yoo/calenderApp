@@ -6,15 +6,21 @@ body, table, tbody, td, th, tr{
     cursor: pointer;
 }
 
+body, tbody{
+    cursor: default;
+}
+
 .calender{
     overflow: hidden;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
     width: 100vw;
     margin-top: 100px;
 }
 
 .calender > table:first-child{
     width: 100%;
+    position: relative;
+    right: 400vw;
 }
 
 .calender > table > tbody{
@@ -34,7 +40,7 @@ body, table, tbody, td, th, tr{
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-
+    cursor: default;
     font-size: 50px;
     font-weight: bold;
 }
@@ -44,11 +50,12 @@ body, table, tbody, td, th, tr{
     font-size: 30px;
     font-weight: bold;
     padding-bottom: 30px;
+    cursor: default;
 }
 /* MONTH */
 .calender > table > tbody > tr > td{
-    padding: 20px;
-    padding-left: 0px;
+    cursor: default;
+    padding: 20px 0px;
     display: inline-flex;
     justify-content: space-between;
     width: 100vw;
@@ -67,6 +74,14 @@ body, table, tbody, td, th, tr{
     padding: 5px 10px;
     background-color: rgb(218, 218, 218, 30%);
     border: 1px solid rgb(218, 218, 218, 80%);
+    width: 200px;
+}
+/* MONTH WEEK TITLE Saturday, Sunday */
+.calender > table > tbody > tr > td table tbody tr:nth-child(2) > th:first-child{
+    color: rgb(68, 124, 209);
+}
+.calender > table > tbody > tr > td table tbody tr:nth-child(2) > th:last-child{
+    color: rgb(209, 68, 68);
 }
 
 /* MONTH DAY */
@@ -77,13 +92,33 @@ body, table, tbody, td, th, tr{
     transition: all .3s;
     line-height: 66px;
 }
+/* MONTH DAY Saturday, Sunday */
+.calender > table > tbody > tr > td table tbody tr > td:first-child{
+    color: rgb(68, 124, 209);
+    font-weight: bold;
+}
+.calender > table > tbody > tr > td table tbody tr > td:last-child{
+    color: rgb(209, 68, 68);
+    font-weight: bold;
+}
 .calender > table > tbody > tr > td table tbody tr > td:hover{
     background-color: rgb(59, 59, 59);
     color: #fff;
 }
 
 
+
 .selected{
-    background-color: brown !important;
+    background-color: rgb(109, 109, 109) !important;
     color: #fff !important;
+}
+
+
+.sendBtn{
+    cursor: pointer;
+    width: 20%;
+    height: 50px;
+    margin: auto;
+    margin-top: 30px;
+    background-color: blueviolet;
 }
