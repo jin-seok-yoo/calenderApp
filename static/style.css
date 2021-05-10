@@ -1,9 +1,19 @@
-body, table, tbody, td, th, tr{
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: 'GmarketSansMedium';
+}
+
+body, table, tbody, td, th, tr, p{
     padding: 0;
     margin: 0;
     vertical-align: top;
     text-align: center;
-    cursor: pointer;
 }
 
 body, tbody{
@@ -14,13 +24,13 @@ body, tbody{
     overflow: hidden;
     /* overflow-x: scroll; */
     width: 100vw;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .calender > table:first-child{
     width: 100%;
     position: relative;
-    right: 400vw;
+    right: 400%;
 }
 
 .calender > table > tbody{
@@ -91,6 +101,7 @@ body, tbody{
     border: 1px solid rgb(218, 218, 218, 80%);
     transition: all .3s;
     line-height: 66px;
+    cursor: pointer;
 }
 /* MONTH DAY Saturday, Sunday */
 .calender > table > tbody > tr > td table tbody tr > td:first-child{
@@ -102,23 +113,140 @@ body, tbody{
     font-weight: bold;
 }
 .calender > table > tbody > tr > td table tbody tr > td:hover{
-    background-color: rgb(59, 59, 59);
+    background-color: rgb(109, 109, 109);
     color: #fff;
 }
 
-
-
 .selected{
-    background-color: rgb(109, 109, 109) !important;
+    background-color: rgb(59, 59, 59) !important;
     color: #fff !important;
 }
 
+
+/* INFO BAR */
+.infoBar{
+    width: 100vw;
+    height: 250px;
+    font-size: 0;
+}
+/* info-bar LEFT */
+.infoBar-left{
+    vertical-align: top;
+    display: inline-block;
+    width: 49%;
+    height: 250px;
+    font-size: 0px;
+}
+.infoBar-left_date{
+    vertical-align: top;
+    display: inline-block;
+    width: 49%;
+    height: 250px;
+    font-size: 20px;
+}
+.infoBar-left_remain{
+    vertical-align: top;
+    display: inline-block;
+    width: 49%;
+    height: 250px;
+    font-size: 20px;
+}
+.infoBar-left > div{
+    border: 1px solid #fff;
+}
+
+.date-box{
+    position: relative;
+    top: 100px;
+    margin: auto;
+    width: 50%;
+    line-height: 50px;
+    border-radius: 20px;
+    color: #000;
+    background-color: #fff;
+    box-shadow: 1px 1px 9px rgba(172, 172, 172, 0.493);
+    border: 1px solid rgb(97, 97, 97);
+}
+
+.remain-box{
+    position: relative;
+    top: 75px;
+    margin: auto;
+    width: 50%;
+    line-height: 50px;
+    border-radius: 20px;
+    color: #000;
+    background-color: #fff;
+    box-shadow: 1px 1px 9px rgba(172, 172, 172, 0.493);
+    border: 1px solid rgb(97, 97, 97);
+}
+.remain-box > p:last-child{
+    color: rgb(209, 68, 68);
+    font-weight: bold;
+}
+
+
+/* info-bar RIGHT */
+.infoBar-right{
+    vertical-align: top;
+    display: inline-block;
+    width: 49%;
+    height: 250px;
+    color: #000;
+    font-size: 0px;
+}
+.sendBtn-purchase{
+    vertical-align: top;
+    display: inline-block;
+    width: 49%;
+    height: 250px;
+    font-size: 20px;
+}
+.sendBtn-cancel{
+    vertical-align: top;
+    display: inline-block;
+    width: 49%;
+    height: 250px;
+    font-size: 20px;
+}
+
+.purchase-box{
+    cursor: pointer;
+    position: relative;
+    top: 100px;
+    margin: auto;
+    width: 50%;
+    line-height: 50px;
+    border-radius: 20px;
+    color: #000;
+    background-color: #fff;
+    box-shadow: 1px 1px 9px rgba(172, 172, 172, 0.493);
+    border: 1px solid rgb(97, 97, 97);
+}
+
+.cancel-box{
+    cursor: pointer;
+    position: relative;
+    top: 100px;
+    margin: auto;
+    width: 50%;
+    line-height: 50px;
+    border-radius: 20px;
+    color: #000;
+    background-color: #fff;
+    box-shadow: 1px 1px 9px rgba(172, 172, 172, 0.493);
+    border: 1px solid rgb(97, 97, 97);
+}
+.clckBox{transition: all .3s;}
+.clckBox:hover{
+    color: #fff;
+    background-color: rgb(97, 97, 97);
+}
 
 .sendBtn{
     cursor: pointer;
     width: 20%;
     height: 50px;
-    margin: auto;
-    margin-top: 30px;
+    /* margin: auto; */
     background-color: blueviolet;
 }

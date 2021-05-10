@@ -2,17 +2,50 @@
 {% load static %}
 {% block content %}
 
-{% for ml in month_list %}
+{% comment %} {% for ml in month_list %}
     {% for dy in ml.day_set.all %}
-        {{ dy.remain_seat }}
+        <p>
+            {{ dy.day }} <br>  
+            {{ dy.remain_seat }}
+        </p>
     {% endfor %}
-{% endfor %}
+{% endfor %} {% endcomment %}
 
 <div class="calender">
     {{ YC|safe }}
 </div>
 
-<div class="sendBtn"></div>
+<div class="infoBar">
+    <div class="infoBar-left">
+        <div class="infoBar-left_date">
+            <div class="date-box">
+                <span>5월</span>
+                <span class="infoDay">0</span>일
+            </div>
+        </div>
+        <div class="infoBar-left_remain">
+            <div class="remain-box">
+                <p>남은 자리</p>
+                <p class="remain-num">0</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="infoBar-right">
+        <div class="sendBtn-purchase">
+            <div class="clckBox purchase-box">
+                예약
+            </div>
+        </div>
+
+        <div class="sendBtn-cancel">
+            <div class="clckBox cancel-box">
+                예약 취소
+            </div>
+        </div>
+    </div>
+</div>
+
 <form id="dateSelForm" method="POST" action="">
     <input id="monthForm" value="" type="hidden">
     <input id="dayForm" value="" type="hidden">
