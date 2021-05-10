@@ -1,3 +1,4 @@
+var infoMonth = document.querySelector('.infoMonth');
 var infoDay = document.querySelector('.infoDay');
 var selFormArr = Array.from(Array(1), () => Array(2).fill(null));
 var daySel = $('.selected').length + 1;
@@ -22,18 +23,21 @@ day.forEach((items)=>{
                 selFormArr[0][0] = selMonth;
                 selFormArr[0][1] = items.innerHTML;
                 infoDay.innerHTML = items.innerHTML;
+                infoMonth.innerHTML = selMonth;
             }else{
                 if(items.classList.contains('selected')){               
                 }else{
                     selFormArr[0][0] = selMonth;
                     selFormArr[0][1] = items.innerHTML;
                     infoDay.innerHTML = items.innerHTML;
+                    infoMonth.innerHTML = selMonth;
                 }
                 items.classList.toggle('selected');
             }
         }else{
             // alert("Not a day");
             infoDay.innerHTML = 0;
+            infoMonth.innerHTML = 0;
             day.forEach((inItem)=>{
                 inItem.classList.remove('selected');
             });
