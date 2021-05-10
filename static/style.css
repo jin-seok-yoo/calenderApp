@@ -1,0 +1,89 @@
+body, table, tbody, td, th, tr{
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+    text-align: center;
+    cursor: pointer;
+}
+
+.calender{
+    overflow: hidden;
+    overflow-x: scroll;
+    width: 100vw;
+    margin-top: 100px;
+}
+
+.calender > table:first-child{
+    width: 100%;
+}
+
+.calender > table > tbody{
+    white-space: nowrap;
+}
+
+.calender > table > tbody > tr:first-child{
+    display: block;
+}
+.calender > table > tbody > tr{
+    display: inline-block;
+}
+
+/* YEAR TITLE*/
+.calender > table > tbody > tr:first-child > th{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-size: 50px;
+    font-weight: bold;
+}
+
+/* MONTH TITLE */
+.calender > table > tbody > tr > td table tbody tr:first-child > th{
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 30px;
+}
+/* MONTH */
+.calender > table > tbody > tr > td{
+    padding: 20px;
+    padding-left: 0px;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100vw;
+}
+.calender > table > tbody > tr > td >table{
+    /* padding: 20px; */
+    margin: auto;
+    width: 90vw;
+    height: 50vh;
+}
+
+/* MONTH WEEK TITLE */
+.calender > table > tbody > tr > td table tbody tr:nth-child(2) > th{
+    clear: both;
+    font-weight: bold;
+    padding: 5px 10px;
+    background-color: rgb(218, 218, 218, 30%);
+    border: 1px solid rgb(218, 218, 218, 80%);
+}
+
+/* MONTH DAY */
+.calender > table > tbody > tr > td table tbody tr > td{
+    padding: 10px 0px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(218, 218, 218, 80%);
+    transition: all .3s;
+    line-height: 66px;
+}
+.calender > table > tbody > tr > td table tbody tr > td:hover{
+    background-color: rgb(59, 59, 59);
+    color: #fff;
+}
+
+
+.selected{
+    background-color: brown !important;
+    color: #fff !important;
+}
