@@ -25,6 +25,11 @@ body, tbody{
     /* overflow-x: scroll; */
     width: 100vw;
     margin-top: 50px;
+    transition: all .3s;
+}
+
+.year{
+    transition: all .3s;
 }
 
 .calender > table:first-child{
@@ -47,7 +52,7 @@ body, tbody{
 /* YEAR TITLE*/
 .calender > table > tbody > tr:first-child > th{
     position: fixed;
-    top: 0;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
     cursor: default;
@@ -87,7 +92,7 @@ body, tbody{
     width: 200px;
 }
 /* MONTH WEEK TITLE Saturday, Sunday */
-.calender > table > tbody > tr > td table tbody tr:nth-child(2) > th:first-child{
+.calender > table > tbody > tr > td table tbody tr:nth-child(2) > th:nth-child(6N){
     color: rgb(68, 124, 209);
 }
 .calender > table > tbody > tr > td table tbody tr:nth-child(2) > th:last-child{
@@ -104,7 +109,7 @@ body, tbody{
     cursor: pointer;
 }
 /* MONTH DAY Saturday, Sunday */
-.calender > table > tbody > tr > td table tbody tr > td:first-child{
+.calender > table > tbody > tr > td table tbody tr > td:nth-child(6N){
     color: rgb(68, 124, 209);
     font-weight: bold;
 }
@@ -113,7 +118,7 @@ body, tbody{
     font-weight: bold;
 }
 .calender > table > tbody > tr > td table tbody tr > td:hover{
-    background-color: rgb(109, 109, 109);
+    background-color: rgb(109, 109, 109) !important;
     color: #fff;
 }
 
@@ -122,6 +127,25 @@ body, tbody{
     color: #fff !important;
 }
 
+
+.btn-wrapper{
+    position: fixed;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.btn{
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 9px rgba(172, 172, 172, 0.493);
+    line-height: 50px;
+}
+.btn.prev{border-radius: 0px 40px 40px 0px;}
+.btn.next{border-radius: 40px 0px 0px 40px;}
 
 /* INFO BAR */
 .infoBar{
@@ -240,7 +264,7 @@ body, tbody{
 .clckBox{transition: all .3s;}
 .clckBox:hover{
     color: #fff;
-    background-color: rgb(97, 97, 97);
+    background-color: rgb(97, 97, 97) !important;
 }
 
 .sendBtn{

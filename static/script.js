@@ -88,3 +88,48 @@ cancel.addEventListener('click', ()=>{
         error: function(request, status, error){},
     });
 });
+
+
+// NEXT, PREV BTN FUNC SECTION
+var nextBtn = document.querySelector('.next')
+var prevBtn = document.querySelector('.prev')
+var monthTable = document.querySelector('.year')
+var currNum = 400;
+
+nextBtn.addEventListener('click', (e)=>{
+    if(currNum == 1100){
+        currNum = 1100;
+    }else{ 
+        currNum += 100;
+        monthTable.setAttribute('style', `right: ${currNum}%`)
+    }
+});
+
+prevBtn.addEventListener('click', ()=>{
+    if(currNum == 0){
+        currNum = 0;
+    }else{
+        currNum -= 100;
+        monthTable.setAttribute('style', `right: ${currNum}%`)
+    }
+});
+
+
+
+// TARGET DATE FILLFUNC
+var fillDate = (tMonth, tDay, tColor) => {
+    day.forEach((items)=>{
+        // 선택한 날짜가 몇달인지 찾는 변수
+        selMonth = $(items).parents('tr').parents('tbody').children('tr').first().text().trim();
+        for(i=0; i<tDay.length; i++){
+            if(selMonth == tMonth && items.innerHTML == tDay[i]){
+                items.setAttribute('style', `background-color: ${tColor};`)
+            }
+        }
+    });
+};
+
+selDateList = [24, 29, 30];
+window.onload = () =>{
+    fillDate('May', selDateList, '#ccffbf')
+}

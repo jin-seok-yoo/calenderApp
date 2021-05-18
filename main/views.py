@@ -68,8 +68,6 @@ def saveData(request):
         return render(request, 'main.html')
     else:
         month_list = Month.objects.all()
-        
-        varMonth = Month()
         varDay = Day()
         
         for ml in month_list:
