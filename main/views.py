@@ -1,3 +1,4 @@
+from django.db.models.fields.related import ManyToManyField
 from django.shortcuts import render, HttpResponse
 import calendar
 from .models import Month, Day
@@ -61,19 +62,23 @@ def checkSeat(request):
 
 
 
-count = 1
+dayMax = 32
 def saveData(request):
-    global count
-    if count == 32:
-        return render(request, 'main.html')
-    else:
-        month_list = Month.objects.all()
-        varDay = Day()
-        
-        for ml in month_list:
-            varDay.day = count
+    global dayMax
+    month_list = Month.objects.all()
+    for ml in month_list:
+        if ml.month == 'May':
+            dayMax = 32
+        elif ml.month == 'June':
+            dayMax = 31
+        elif ml.month == 'July':
+            dayMax = 32
+        elif ml.month == 'August':
+            dayMax = 32
+        for i in range(1, dayMax):
+            varDay = Day()
+            varDay.day = i
             varDay.remain_seat = 4
             varDay.f_month = ml
             varDay.save()
-        count += 1
-        return saveData(request)
+    return render(request, 'main.html')
