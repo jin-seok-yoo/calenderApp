@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.fields.related import ManyToManyField
+from account.models import *
 
 class Month(models.Model):
     month = models.CharField(max_length=200, blank=True, null=True)

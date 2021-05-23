@@ -43,14 +43,13 @@ day.forEach((items)=>{
             });
         }
         e.stopPropagation();
-
-        dateDay = items.innerHTML ;
+        dateDay = items.innerHTML;
         $.ajax({
             type: "POST",
             url: "http://localhost:8000/viewSeat",
-            data: {'dateDay': dateDay}, // 서버로 데이터 전송시 옵션
+            data: {'dateDay': dateDay, 'selMonth': selMonth}, // 서버로 데이터 전송시 옵션
             dataType: "json", // 서버측에서 전송한 데이터를 어떤 형식의 데이터로서 해석할 것인가를 지정, 없으면 알아서 판단
-            success: function(response){ // 통신 성공시 - 동적으로 좋아요 갯수 변경, 유저 목록 변경
+            success: function(response){ // 통신 성공시
                 $('.remain-num').html(response.resSeat);
             },
             error: function(request, status, error){},
@@ -65,7 +64,7 @@ purchase.addEventListener('click', ()=>{
     $.ajax({
         type: "POST",
         url: "http://localhost:8000/checkSeat",
-        data: {'reqDay': reqDay, 'conCheck': "purchase"},
+        data: {'reqDay': reqDay, 'conCheck': "purchase", 'selMonth': selMonth},
         dataType: "json",
         success: function(response){
             $('.remain-num').html(response.resSeat);
@@ -79,8 +78,8 @@ cancel.addEventListener('click', ()=>{
     reqDay =  $('.infoDay').html();
     $.ajax({
         type: "POST",
-        url: "http://localhost:8000/checkSeat",
-        data: {'reqDay': reqDay, 'conCheck': "cancel"},
+        url: "http://localhost:8000/cancelSeat",
+        data: {'reqDay': reqDay, 'selMonth': selMonth},
         dataType: "json",
         success: function(response){
             $('.remain-num').html(response.resSeat);
@@ -96,7 +95,7 @@ var prevBtn = document.querySelector('.prev')
 var monthTable = document.querySelector('.year')
 var currNum = 400;
 
-nextBtn.addEventListener('click', (e)=>{
+nextBtn.addEventListener('click', ()=>{
     if(currNum == 1100){
         currNum = 1100;
     }else{ 
