@@ -28,7 +28,7 @@ const animateData = {
 const textTitle = document.querySelector('.title');
 const textAnim = TweenMax.fromTo(textTitle, 3, { opacity: 0, top: '60%' }, { opacity: 1, top: '50%' });
 let scene2 = new ScrollMagic.Scene({
-  duration: 3000,
+  duration: 1000,
   triggerElement: document.querySelector('.wrapper_2'),
   triggerHook: 0
 })
