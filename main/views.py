@@ -7,6 +7,7 @@ import json
 from .models import Month, Day
 from account.models import *
 
+
 def index(request):
     yearCalender = calendar.HTMLCalendar().formatyear(2021)
     context = {
@@ -23,10 +24,10 @@ def viewSeat(request):
     for ml in month_list:
         if ml.month == selMonth:
             for dl in ml.day_set.all():
-                if dl.day == dateDay: 
-                    resSeat = dl.remain_seat 
-    context = {  
-        'resSeat': resSeat,    
+                if dl.day == dateDay:
+                    resSeat = dl.remain_seat
+    context = {
+        'resSeat': resSeat,
     }
     return HttpResponse(json.dumps(context), content_type="application/json")
 
@@ -37,29 +38,29 @@ def checkSeat(request):
     reqDay = request.POST.get('reqDay')
     conCheck = request.POST.get('conCheck')
     selMonth = request.POST.get('selMonth')
+    print(reqDay, conCheck, selMonth)
 
     if conCheck == "purchase":
         for ml in month_list:
             if ml.month == selMonth:
                 for dl in ml.day_set.all():
-                    if dl.day == reqDay: 
+                    if dl.day == reqDay:
                         dl.remain_seat -= 1
                         dl.save()
                         user.profile.book_day.add(dl)
-                        print(user.profile.book_day.filter(id=dl.id))   
-                        # if()
+                        print(user.profile.book_day.filter(id=dl.id))
                         user.save
                         resSeat = dl.remain_seat
-    # elif conCheck == "cancel":
-    #     for ml in month_list:
-    #         if ml.month == selMonth:
-    #             for dl in ml.day_set.all():
-    #                 if dl.day == reqDay: 
-    #                     dl.remain_seat += 1
-    #                     dl.save()
-    #                     resSeat = dl.remain_seat
-    context = {  
-        'resSeat': resSeat,    
+    elif conCheck == "cancel":
+        for ml in month_list:
+            if ml.month == selMonth:
+                for dl in ml.day_set.all():
+                    if dl.day == reqDay:
+                        dl.remain_seat += 1
+                        dl.save()
+                        resSeat = dl.remain_seat
+    context = {
+        'resSeat': resSeat,
     }
     return HttpResponse(json.dumps(context), content_type="application/json")
 
@@ -74,17 +75,20 @@ def cancelSeat(request):
             for dl in ml.day_set.all():
                 if dl.day == reqDay:
                     dayId = dl.id
-                    request.user.profile.book_day.filter(id = dayId).delete()
+                    request.user.profile.book_day.filter(id=dayId).delete()
                     # print(request.user.profile.book_day.filter(id=dl.id))
                     dl.remain_seat += 1
                     dl.save()
                     resSeat = dl.remain_seat
-    context = {  
-        'resSeat': resSeat,    
+    context = {
+        'resSeat': resSeat,
     }
     return HttpResponse(json.dumps(context), content_type="application/json")
 
+
 dayMax = 32
+
+
 def saveData(request):
     global dayMax
     month_list = Month.objects.all()
